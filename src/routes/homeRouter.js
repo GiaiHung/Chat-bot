@@ -6,5 +6,6 @@ const router = express.Router()
 router.get('/', getHomePage)
 router.get('/webhook', getWebhooks)
 router.get('/messaging-webhook', postWebhooks)
+router.post('/webhook', postWebhooks)
 
 export default router

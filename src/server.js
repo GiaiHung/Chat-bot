@@ -7,15 +7,15 @@ require('dotenv').config()
 const app = express()
 const PORT = process.env.PORT || 5000
 
+// Body parser
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
 // Config view engine
 viewEngine(app)
 
 // Config routes
 initRouter(app)
-
-// Body parser
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
 
 app.listen(PORT, () => {
   console.log('App is listening on port', PORT)

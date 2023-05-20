@@ -1,3 +1,5 @@
+import request from 'request'
+
 const getHomePage = (req, res) => {
   res.render('home.ejs')
 }

@@ -1,4 +1,5 @@
 import request from 'request'
+require('dotenv').config()
 
 const access_token = process.env.ACCESS_TOKEN
 

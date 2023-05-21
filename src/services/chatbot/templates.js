@@ -1,6 +1,6 @@
 import { GET_STARTED_IMAGE_URL } from '../../constants/images'
 
-const sendGetStartedTemplate = () => {
+const sendGetStartedTemplate = (username) => {
   const response = {
     attachment: {
       type: 'template',
@@ -8,7 +8,7 @@ const sendGetStartedTemplate = () => {
         template_type: 'generic',
         elements: [
           {
-            title: 'Xin chào bạn đến với Booing Care',
+            title: `Xin chào ${username} đến với Booing Care`,
             subtitle: 'Dưới đây là các lựa chọn của phòng khám',
             image_url: GET_STARTED_IMAGE_URL,
             buttons: [

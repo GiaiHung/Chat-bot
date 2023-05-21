@@ -1,5 +1,9 @@
 import express from 'express'
-import { getHomePage, setupProfile } from '../controllers/home'
+import {
+  getHomePage,
+  setupPersistentMenu,
+  setupProfile,
+} from '../controllers/home'
 import { getWebhooks, postWebhooks } from '../controllers/home/webhooks'
 
 const router = express.Router()
@@ -7,6 +11,11 @@ const router = express.Router()
 router.get('/', getHomePage)
 router.get('/webhook', getWebhooks)
 router.post('/webhook', postWebhooks)
+
+// Get started button, whitelisted domains
 router.post('/setup-profile', setupProfile)
+
+// Persistence menu
+router.post('/setup-persistent-menu', setupPersistentMenu)
 
 export default router

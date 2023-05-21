@@ -33,14 +33,10 @@ async function callSendAPI(sender_psid, response) {
 const handleGetStarted = async (sender_psid) => {
   try {
     const username = await getUserProfile(sender_psid)
-    const response1 = { text: `Chào mừng ${username} đến với Booking Care` }
-    const response2 = sendGetStartedTemplate()
-
-    // Send hello message
-    await callSendAPI(sender_psid, response1)
+    const response = sendGetStartedTemplate(username)
 
     // Send generic template message
-    await callSendAPI(sender_psid, response2)
+    await callSendAPI(sender_psid, response)
   } catch (error) {
     console.log(error)
   }

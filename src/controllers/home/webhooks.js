@@ -99,12 +99,12 @@ async function handlePostback(sender_psid, received_postback) {
   // Set the response based on the postback payload
   switch (payload) {
     case 'GET_STARTED':
+    case 'RESTART_BOT':
       await handleGetStarted(sender_psid)
     default:
       response = {
         text: `Oops! I don't know response with postback ${payload}`,
       }
-      callSendAPI(sender_psid, response)
   }
 }
 

@@ -44,7 +44,7 @@ const getUserProfile = (sender_psid) => {
     (err, res, body) => {
       if (!err) {
         body = JSON.parse(body)
-        const username = body.firstName + ' ' + body.lastName
+        const username = body.first_name + ' ' + body.last_name
         return username
       } else {
         console.error('Unable to send message:' + err)

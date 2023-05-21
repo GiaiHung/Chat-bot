@@ -1,4 +1,5 @@
 import request from 'request'
+import { sendGetStartedTemplate } from './templates'
 require('dotenv').config()
 
 const access_token = process.env.ACCESS_TOKEN
@@ -32,9 +33,14 @@ async function callSendAPI(sender_psid, response) {
 const handleGetStarted = async (sender_psid) => {
   try {
     const username = await getUserProfile(sender_psid)
-    console.log('Check handle get started', username)
-    const response = { text: `Chào mừng ${username} đến với Booking Care` }
-    await callSendAPI(sender_psid, response)
+    const response1 = { text: `Chào mừng ${username} đến với Booking Care` }
+    const response2 = sendGetStartedTemplate()
+
+    // Send hello message
+    await callSendAPI(sender_psid, response1)
+
+    // Send generic template message
+    await callSendAPI(sender_psid, response2)
   } catch (error) {
     console.log(error)
   }
@@ -51,7 +57,6 @@ const getUserProfile = (sender_psid) => {
         if (!err) {
           body = JSON.parse(body)
           let username = `${body.last_name} ${body.first_name}`
-          console.log('Check get user profile', username)
           resolve(username)
         } else {
           console.error('Unable to send message:' + err)

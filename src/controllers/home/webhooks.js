@@ -1,5 +1,5 @@
 import request from 'request'
-import { handleGetStarted } from '../../services/chatbotService'
+import { handleGetStarted } from '../../services/chatbot/chatbotService'
 
 const getWebhooks = async (req, res) => {
   const verifyToken = process.env.VERIFY_TOKEN
@@ -9,7 +9,6 @@ const getWebhooks = async (req, res) => {
 
   if (mode && token) {
     if (mode === 'subscribe' && token === verifyToken) {
-      console.log('WEBHOOK_VERIFIED')
       res.status(200).send(challenge)
     } else {
       res.sendStatus(403)
@@ -30,7 +29,6 @@ const postWebhooks = async (req, res) => {
 
       // Get the sender PSID
       let sender_psid = webhook_event.sender.id
-      console.log('Sender PSID: ' + sender_psid)
 
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
@@ -52,8 +50,6 @@ function handleMessage(sender_psid, received_message) {
 
   // Checks if the message contains text
   if (received_message.text) {
-    // Create the payload for a basic text message, which
-    // will be added to the body of our request to the Send API
     response = {
       text: `You sent the message: "${received_message.text}". Now send me an attachment!`,
     }
@@ -102,19 +98,14 @@ async function handlePostback(sender_psid, received_postback) {
 
   // Set the response based on the postback payload
   switch (payload) {
-    case 'yes':
-      response = { text: 'Thanks!' }
-    case 'no':
-      response = { text: 'Oops, try sending another image.' }
     case 'GET_STARTED':
       await handleGetStarted(sender_psid)
     default:
       response = {
         text: `Oops! I don't know response with postback ${payload}`,
       }
+      callSendAPI(sender_psid, response)
   }
-  // Send the message to acknowledge the postback
-  // callSendAPI(sender_psid, response)
 }
 
 // Sends response messages via the Send API

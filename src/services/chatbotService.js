@@ -44,6 +44,7 @@ const getUserProfile = (sender_psid) => {
     (err, res, body) => {
       if (!err) {
         body = JSON.parse(body)
+        console.log(body)
         const username = body.first_name + ' ' + body.last_name
         return username
       } else {

@@ -30,22 +30,22 @@ async function callSendAPI(sender_psid, response) {
 }
 
 const handleGetStarted = async (sender_psid) => {
-  await getUserProfile(sender_psid)
-  const response = { text: 'Chào mừng đến với Booking Care' }
+  const username = getUserProfile(sender_psid)
+  const response = { text: `Chào mừng ${username} đến với Booking Care` }
   await callSendAPI(sender_psid, response)
 }
 
-const getUserProfile = async (sender_psid) => {
-  await request(
+const getUserProfile = (sender_psid) => {
+  request(
     {
       uri: `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${access_token}`,
-      qs: { access_token },
       method: 'GET',
     },
     (err, res, body) => {
-      console.log(res, body)
       if (!err) {
-        console.log('message sent!')
+        body = JSON.parse(body)
+        const username = body.firstName + ' ' + body.lastName
+        return username
       } else {
         console.error('Unable to send message:' + err)
       }

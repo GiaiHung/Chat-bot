@@ -30,10 +30,14 @@ async function callSendAPI(sender_psid, response) {
 }
 
 const handleGetStarted = async (sender_psid) => {
-  const username = getUserProfile(sender_psid)
-  console.log('Check handle get started', username)
-  const response = { text: `Chào mừng ${username} đến với Booking Care` }
-  await callSendAPI(sender_psid, response)
+  try {
+    const username = await getUserProfile(sender_psid)
+    console.log('Check handle get started', username)
+    const response = { text: `Chào mừng ${username} đến với Booking Care` }
+    await callSendAPI(sender_psid, response)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const getUserProfile = (sender_psid) => {

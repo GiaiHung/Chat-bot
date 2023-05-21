@@ -36,6 +36,7 @@ const handleGetStarted = async (sender_psid) => {
 }
 
 const getUserProfile = (sender_psid) => {
+  let username = ''
   request(
     {
       uri: `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${access_token}`,
@@ -44,14 +45,13 @@ const getUserProfile = (sender_psid) => {
     (err, res, body) => {
       if (!err) {
         body = JSON.parse(body)
-        console.log(body)
-        const username = body.first_name + ' ' + body.last_name
-        return username
+        username = `${body.last_name} ${body.first_name}`
       } else {
         console.error('Unable to send message:' + err)
       }
     }
   )
+  return username
 }
 
 export { handleGetStarted }

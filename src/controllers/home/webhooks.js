@@ -1,5 +1,8 @@
 import request from 'request'
-import { handleGetStarted } from '../../services/chatbot/chatbotService'
+import {
+  handleGetStarted,
+  handleMainMenu,
+} from '../../services/chatbot/chatbotService'
 
 const getWebhooks = async (req, res) => {
   const verifyToken = process.env.VERIFY_TOKEN
@@ -101,10 +104,15 @@ async function handlePostback(sender_psid, received_postback) {
     case 'GET_STARTED':
     case 'RESTART_BOT':
       await handleGetStarted(sender_psid)
+      break
+    case 'MAIN_MENU':
+      handleMainMenu(sender_psid)
+      break
     default:
       response = {
         text: `Oops! I don't know response with postback ${payload}`,
       }
+      callSendAPI(sender_psid, response)
   }
 }
 

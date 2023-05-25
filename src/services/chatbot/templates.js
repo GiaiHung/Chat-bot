@@ -153,7 +153,7 @@ const sendMedicalProductTemplate1 = () => {
           {
             type: 'web_url',
             title: 'Xem bác sĩ',
-            url: menuLinks.medical_products,
+            url: menuLinks.medical_product,
             webview_height_ratio: 'full',
           },
           {

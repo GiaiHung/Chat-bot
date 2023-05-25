@@ -73,7 +73,7 @@ const handleSendGuidance = async (sender_psid) => {
 const handleSendMedicalProduct = async (sender_psid) => {
   try {
     // Image
-    const response1 = await sendMedicalProductTemplate1()
+    const response1 = sendMedicalProductTemplate1()
 
     // Text and buttons
     const response2 = sendMedicalProductTemplate2()

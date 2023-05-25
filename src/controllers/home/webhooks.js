@@ -113,8 +113,10 @@ async function handlePostback(sender_psid, received_postback) {
       break
     case 'GUIDANCE':
       handleSendGuidance(sender_psid)
+      break
     case 'MEDICAL_PRODUCT':
       handleSendMedicalProduct(sender_psid)
+      break
     default:
       response = {
         text: `Oops! I don't know response with postback ${payload}`,

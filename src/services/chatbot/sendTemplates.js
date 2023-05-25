@@ -1,3 +1,4 @@
+import request from 'request'
 import { callSendAPI } from './chatbotService'
 import { sendGetStartedTemplate, sendMainMenuTemplate } from './templates'
 require('dotenv').config()

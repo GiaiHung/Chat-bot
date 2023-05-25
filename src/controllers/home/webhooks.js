@@ -3,6 +3,7 @@ import {
   handleGetStarted,
   handleMainMenu,
   handleSendGuidance,
+  handleSendMedicalProduct,
 } from '../../services/chatbot/sendTemplates'
 
 const getWebhooks = async (req, res) => {
@@ -107,10 +108,13 @@ async function handlePostback(sender_psid, received_postback) {
       await handleGetStarted(sender_psid)
       break
     case 'MAIN_MENU':
+    case 'RETURN_HOME_SCREEN':
       handleMainMenu(sender_psid)
       break
     case 'GUIDANCE':
       handleSendGuidance(sender_psid)
+    case 'MEDICAL_PRODUCT':
+      handleSendMedicalProduct(sender_psid)
     default:
       response = {
         text: `Oops! I don't know response with postback ${payload}`,

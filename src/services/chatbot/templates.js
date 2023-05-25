@@ -1,4 +1,7 @@
-import { GET_STARTED_IMAGE_URL } from '../../constants/images'
+import {
+  GET_STARTED_IMAGE_URL,
+  MEDICAL_PRODUCT_URL,
+} from '../../constants/images'
 import { menuLinks } from '../../constants/images'
 
 const sendGetStartedTemplate = (username) => {
@@ -139,4 +142,51 @@ const sendGuidanceTemplate = () => {
   return response
 }
 
-export { sendGetStartedTemplate, sendMainMenuTemplate, sendGuidanceTemplate }
+const sendMedicalProductTemplate1 = () => {
+  const response = {
+    attachment: {
+      type: 'template',
+      payload: {
+        template_type: 'button',
+        text: 'Booking Care luôn cố gắng cung cấp cho bạn thiết bị y tế tốt và hiện đại nhất với trang thiết bị được nhập khẩu trực tiếp từ Mỹ đạt tiêu chuẩn quốc tế và đã được kiểm định chất lượng nghiêm ngặt',
+        buttons: [
+          {
+            type: 'web_url',
+            title: 'Xem bác sĩ',
+            url: menuLinks.medical_products,
+            webview_height_ratio: 'full',
+          },
+          {
+            type: 'postback',
+            title: 'Quay trở lại menu chính',
+            payload: 'RETURN_HOME_SCREEN',
+          },
+        ],
+      },
+    },
+  }
+
+  return response
+}
+
+const sendMedicalProductTemplate2 = () => {
+  const response = {
+    attachment: {
+      type: 'image',
+      payload: {
+        url: MEDICAL_PRODUCT_URL,
+        is_reusable: true,
+      },
+    },
+  }
+
+  return response
+}
+
+export {
+  sendGetStartedTemplate,
+  sendMainMenuTemplate,
+  sendGuidanceTemplate,
+  sendMedicalProductTemplate1,
+  sendMedicalProductTemplate2,
+}

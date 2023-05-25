@@ -1,6 +1,12 @@
 import request from 'request'
 import { callSendAPI } from './chatbotService'
-import { sendGetStartedTemplate, sendMainMenuTemplate } from './templates'
+import {
+  sendGetStartedTemplate,
+  sendGuidanceTemplate,
+  sendMainMenuTemplate,
+  sendMedicalProductTemplate1,
+  sendMedicalProductTemplate2,
+} from './templates'
 require('dotenv').config()
 
 const access_token = process.env.ACCESS_TOKEN
@@ -63,4 +69,26 @@ const handleSendGuidance = async (sender_psid) => {
   }
 }
 
-export { handleGetStarted, handleMainMenu, handleSendGuidance }
+// MEDICAL PRODUCT
+const handleSendMedicalProduct = async (sender_psid) => {
+  try {
+    // Image
+    const response1 = sendMedicalProductTemplate1()
+
+    // Text and buttons
+    const response2 = sendMedicalProductTemplate2()
+
+    // Send generic template message
+    await callSendAPI(sender_psid, response1)
+    await callSendAPI(sender_psid, response2)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export {
+  handleGetStarted,
+  handleMainMenu,
+  handleSendGuidance,
+  handleSendMedicalProduct,
+}

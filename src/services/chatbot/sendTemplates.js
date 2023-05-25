@@ -63,4 +63,4 @@ const handleSendGuidance = async (sender_psid) => {
   }
 }
 
-export { handleGetStarted, handleMainMenu }
+export { handleGetStarted, handleMainMenu, handleSendGuidance }

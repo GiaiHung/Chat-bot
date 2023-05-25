@@ -20,13 +20,13 @@ const sendGetStartedTemplate = (username) => {
               },
               {
                 type: 'postback',
-                title: 'Tra cứu thông tin',
-                payload: 'INFORMATION',
+                title: 'Sản phẩm y tế',
+                payload: 'MEDICAL_PRODUCT',
               },
               {
                 type: 'postback',
-                title: 'Sản phẩm y tế',
-                payload: 'MEDICAL_PRODUCT',
+                title: 'Hướng dẫn sử dụng bot',
+                payload: 'GUIDANCE',
               },
             ],
           },
@@ -97,4 +97,46 @@ const sendMainMenuTemplate = () => {
   return response
 }
 
-export { sendGetStartedTemplate, sendMainMenuTemplate }
+const sendGuidanceTemplate = () => {
+  const response = {
+    attachment: {
+      type: 'template',
+      payload: {
+        template_type: 'generic',
+        elements: [
+          {
+            title: `Hướng dẫn sử dụng bot`,
+            subtitle:
+              'Xin chào! Tôi là chat bot Booking Care. Tôi có thể giúp được gì cho bạn? Click vào các nút dưới đây để xem thêm chi tiết',
+            image_url:
+              'https://www.callcentrehelper.com/images/stories/2020/10/chat-bot-head-set-760.jpg',
+            buttons: [
+              {
+                type: 'web_url',
+                title: 'Xem bác sĩ',
+                url: menuLinks.doctor,
+                webview_height_ratio: 'full',
+              },
+              {
+                type: 'web_url',
+                title: 'Xem phòng khám',
+                url: menuLinks.clinic,
+                webview_height_ratio: 'full',
+              },
+              {
+                type: 'web_url',
+                title: 'Xem chuyên khoa',
+                url: menuLinks.specialty,
+                webview_height_ratio: 'full',
+              },
+            ],
+          },
+        ],
+      },
+    },
+  }
+
+  return response
+}
+
+export { sendGetStartedTemplate, sendMainMenuTemplate, sendGuidanceTemplate }

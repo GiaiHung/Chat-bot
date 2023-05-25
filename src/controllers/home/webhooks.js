@@ -2,7 +2,8 @@ import request from 'request'
 import {
   handleGetStarted,
   handleMainMenu,
-} from '../../services/chatbot/chatbotService'
+  handleSendGuidance,
+} from '../../services/chatbot/sendTemplates'
 
 const getWebhooks = async (req, res) => {
   const verifyToken = process.env.VERIFY_TOKEN
@@ -108,6 +109,8 @@ async function handlePostback(sender_psid, received_postback) {
     case 'MAIN_MENU':
       handleMainMenu(sender_psid)
       break
+    case 'GUIDANCE':
+      handleSendGuidance(sender_psid)
     default:
       response = {
         text: `Oops! I don't know response with postback ${payload}`,

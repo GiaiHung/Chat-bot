@@ -2,7 +2,8 @@ import request from 'request'
 import { callSendAPI } from './chatbotService'
 import {
   sendGetStartedTemplate,
-  sendGuidanceTemplate,
+  sendGuidanceTemplate1,
+  sendGuidanceTemplate2,
   sendMainMenuTemplate,
   sendMedicalProductTemplate1,
   sendMedicalProductTemplate2,
@@ -60,10 +61,15 @@ const handleMainMenu = async (sender_psid) => {
 // GUIDANCE
 const handleSendGuidance = async (sender_psid) => {
   try {
-    const response = sendGuidanceTemplate()
+    // Generic
+    const response1 = sendGuidanceTemplate1()
+
+    // Video
+    const response2 = sendGuidanceTemplate2()
 
     // Send generic template message
-    await callSendAPI(sender_psid, response)
+    await callSendAPI(sender_psid, response1)
+    await callSendAPI(sender_psid, response2)
   } catch (error) {
     console.log(error)
   }

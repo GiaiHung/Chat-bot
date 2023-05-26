@@ -1,5 +1,6 @@
 import {
   GET_STARTED_IMAGE_URL,
+  GUIDANCE_VIDEO_URL,
   MEDICAL_PRODUCT_URL,
 } from '../../constants/images'
 import { menuLinks } from '../../constants/images'
@@ -100,7 +101,7 @@ const sendMainMenuTemplate = () => {
   return response
 }
 
-const sendGuidanceTemplate = () => {
+const sendGuidanceTemplate1 = () => {
   const response = {
     attachment: {
       type: 'template',
@@ -135,6 +136,20 @@ const sendGuidanceTemplate = () => {
             ],
           },
         ],
+      },
+    },
+  }
+
+  return response
+}
+
+const sendGuidanceTemplate2 = () => {
+  const response = {
+    attachment: {
+      type: 'video',
+      payload: {
+        url: GUIDANCE_VIDEO_URL,
+        is_reusable: true,
       },
     },
   }
@@ -186,7 +201,8 @@ const sendMedicalProductTemplate2 = () => {
 export {
   sendGetStartedTemplate,
   sendMainMenuTemplate,
-  sendGuidanceTemplate,
+  sendGuidanceTemplate1,
+  sendGuidanceTemplate2,
   sendMedicalProductTemplate1,
   sendMedicalProductTemplate2,
 }

@@ -23,17 +23,17 @@ const sendGetStartedTemplate = (username) => {
                 title: 'Menu Chính',
                 payload: 'MAIN_MENU',
               },
-              {
-                type: 'postback',
-                title: 'Sản phẩm y tế',
-                payload: 'MEDICAL_PRODUCT',
-              },
+              // {
+              //   type: 'postback',
+              //   title: 'Sản phẩm y tế',
+              //   payload: 'MEDICAL_PRODUCT',
+              // },
               {
                 type: 'web_url',
                 url: `${process.env.URL_WEB_VIEW_RESERVE}`,
                 title: 'Reserve an appointment',
                 webview_height_ratio: 'tall',
-                // messenger_extensions: true,
+                messenger_extensions: true,
               },
               {
                 type: 'postback',

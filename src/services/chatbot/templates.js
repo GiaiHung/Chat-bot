@@ -152,7 +152,7 @@ const sendMedicalProductTemplate1 = () => {
         buttons: [
           {
             type: 'web_url',
-            title: 'Xem bác sĩ',
+            title: 'Xem thiết bị y tế',
             url: menuLinks.medical_product,
             webview_height_ratio: 'full',
           },

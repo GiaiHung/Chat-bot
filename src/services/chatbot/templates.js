@@ -29,10 +29,9 @@ const sendGetStartedTemplate = (username) => {
                 payload: 'MEDICAL_PRODUCT',
               },
               {
-                type: 'webview_url',
+                type: 'web_url',
                 url: `${process.env.URL_WEB_VIEW_RESERVE}`,
                 title: 'Reserve an appointment',
-                payload: 'RESERVE',
                 webview_height_ratio: 'tall',
                 messenger_extensions: true,
               },

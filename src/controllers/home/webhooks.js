@@ -2,6 +2,7 @@ import request from 'request'
 import {
   handleGetStarted,
   handleMainMenu,
+  handleReserve,
   handleSendGuidance,
   handleSendMedicalProduct,
 } from '../../services/chatbot/sendTemplates'
@@ -111,6 +112,8 @@ async function handlePostback(sender_psid, received_postback) {
     case 'RETURN_HOME_SCREEN':
       handleMainMenu(sender_psid)
       break
+    case 'RESERVE':
+      handleReserve(sender_psid)
     case 'GUIDANCE':
       handleSendGuidance(sender_psid)
       break

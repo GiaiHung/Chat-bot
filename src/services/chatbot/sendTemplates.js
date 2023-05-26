@@ -58,6 +58,19 @@ const handleMainMenu = async (sender_psid) => {
   }
 }
 
+// RESERVE
+const handleReserve = async () => {
+  try {
+    // Generic
+    const response1 = sendGuidanceTemplate1()
+
+    // Send generic template message
+    await callSendAPI(sender_psid, response1)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // GUIDANCE
 const handleSendGuidance = async (sender_psid) => {
   try {
@@ -65,11 +78,11 @@ const handleSendGuidance = async (sender_psid) => {
     const response1 = sendGuidanceTemplate1()
 
     // Video
-    const response2 = sendGuidanceTemplate2()
+    // const response2 = sendGuidanceTemplate2()
 
     // Send generic template message
     await callSendAPI(sender_psid, response1)
-    await callSendAPI(sender_psid, response2)
+    // await callSendAPI(sender_psid, response2)
   } catch (error) {
     console.log(error)
   }
@@ -95,6 +108,7 @@ const handleSendMedicalProduct = async (sender_psid) => {
 export {
   handleGetStarted,
   handleMainMenu,
+  handleReserve,
   handleSendGuidance,
   handleSendMedicalProduct,
 }

@@ -4,6 +4,7 @@ import {
   MEDICAL_PRODUCT_URL,
 } from '../../constants/images'
 import { menuLinks } from '../../constants/images'
+require('dotenv').config()
 
 const sendGetStartedTemplate = (username) => {
   const response = {
@@ -26,6 +27,14 @@ const sendGetStartedTemplate = (username) => {
                 type: 'postback',
                 title: 'Sản phẩm y tế',
                 payload: 'MEDICAL_PRODUCT',
+              },
+              {
+                type: 'webview_url',
+                url: `${process.env.URL_WEB_VIEW_RESERVE}`,
+                title: 'Reserve an appointment',
+                payload: 'RESERVE',
+                webview_height_ratio: 'tall',
+                messenger_extensions: true,
               },
               {
                 type: 'postback',
@@ -185,6 +194,20 @@ const sendMedicalProductTemplate1 = () => {
 }
 
 const sendMedicalProductTemplate2 = () => {
+  const response = {
+    attachment: {
+      type: 'image',
+      payload: {
+        url: MEDICAL_PRODUCT_URL,
+        is_reusable: true,
+      },
+    },
+  }
+
+  return response
+}
+
+const sendReserveTemplate = () => {
   const response = {
     attachment: {
       type: 'image',

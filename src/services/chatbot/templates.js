@@ -28,13 +28,13 @@ const sendGetStartedTemplate = (username) => {
                 title: 'Sản phẩm y tế',
                 payload: 'MEDICAL_PRODUCT',
               },
-              {
-                type: 'web_url',
-                url: `${process.env.URL_WEB_VIEW_RESERVE}`,
-                title: 'Reserve an appointment',
-                webview_height_ratio: 'tall',
-                messenger_extensions: true,
-              },
+              // {
+              //   type: 'web_url',
+              //   url: `${process.env.URL_WEB_VIEW_RESERVE}`,
+              //   title: 'Reserve an appointment',
+              //   webview_height_ratio: 'tall',
+              //   messenger_extensions: true,
+              // },
               {
                 type: 'postback',
                 title: 'Hướng dẫn sử dụng bot',

@@ -6,6 +6,7 @@ const getReserver = (req, res) => {
 
 const postReserve = async (req, res) => {
   try {
+    console.log('Hello from server')
     const { psid, customerName, email, phoneNumber } = req.body
     if (!customerName) customerName = 'Tên được để trống'
 

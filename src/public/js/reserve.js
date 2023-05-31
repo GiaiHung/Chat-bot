@@ -54,6 +54,7 @@ function validateInputFields() {
 }
 
 function handleClickButtonReserveBooking() {
+  console.log('Hello World from reverse table!')
   $('#btnReserveTable').on('click', function (e) {
     let check = validateInputFields() //return true or false
 

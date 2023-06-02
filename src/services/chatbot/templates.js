@@ -6,7 +6,7 @@ import {
 import { menuLinks } from '../../constants/images'
 require('dotenv').config()
 
-const sendGetStartedTemplate = (username) => {
+const sendGetStartedTemplate = (username, sender_psid) => {
   const response = {
     attachment: {
       type: 'template',
@@ -25,7 +25,7 @@ const sendGetStartedTemplate = (username) => {
               },
               {
                 type: 'web_url',
-                url: `${process.env.URL_WEB_VIEW_RESERVE}`,
+                url: `${process.env.URL_WEB_VIEW_RESERVE}/${sender_psid}`,
                 title: 'Hẹn lịch khám',
                 webview_height_ratio: 'full',
                 messenger_extensions: true,

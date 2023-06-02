@@ -16,7 +16,7 @@ const access_token = process.env.ACCESS_TOKEN
 const handleGetStarted = async (sender_psid) => {
   try {
     const username = await getUserProfile(sender_psid)
-    const response = sendGetStartedTemplate(username)
+    const response = sendGetStartedTemplate(username, sender_psid)
 
     // Send generic template message
     await callSendAPI(sender_psid, response)

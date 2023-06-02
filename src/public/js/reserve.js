@@ -24,6 +24,9 @@ window.extAsyncInit = function () {
     function error(err) {
       // error
       console.log('Lỗi đặt khám Eric bot', err)
+      // Run backup get senderId
+      $('#psid').val(senderId)
+      handleClickButtonReserveBooking()
     }
   )
 }

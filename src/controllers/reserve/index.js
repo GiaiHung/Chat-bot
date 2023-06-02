@@ -1,7 +1,10 @@
 import { callSendAPI } from '../../services/chatbot/chatbotService'
 
 const getReserver = (req, res) => {
-  res.render('reserve.ejs')
+  const senderId = req.params.id
+  res.render('reserve.ejs', {
+    senderId,
+  })
 }
 
 const postReserve = async (req, res) => {

@@ -9,13 +9,14 @@ const getReserver = (req, res) => {
 
 const postReserve = async (req, res) => {
   try {
-    console.log('Hello from server')
     const { psid, customerName, email, phoneNumber } = req.body
-    if (!customerName) customerName = 'Tên được để trống'
+    let name = ''
+    if (!customerName) name = 'Tên được để trống'
+    else name = customerName
 
     const response1 = {
       text: `--- Thông tin khách hàng đặt khám chữa bệnh ---
-      \nCustomer name: ${customerName}
+      \nCustomer name: ${name}
       \nEmail: ${email}
       \nPhone number: ${phoneNumber}`,
     }

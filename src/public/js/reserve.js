@@ -89,6 +89,7 @@ function handleClickButtonReserveBooking() {
         },
         error: function (error) {
           console.log(error)
+          window.top.close()
         },
       })
     }

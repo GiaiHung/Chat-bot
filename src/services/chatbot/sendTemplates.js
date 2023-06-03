@@ -8,6 +8,7 @@ import {
   sendMedicalProductTemplate1,
   sendMedicalProductTemplate2,
 } from './templates'
+import { GIPHY_IMAGE_URL } from '../../constants/images'
 require('dotenv').config()
 
 const access_token = process.env.ACCESS_TOKEN
@@ -16,10 +17,40 @@ const access_token = process.env.ACCESS_TOKEN
 const handleGetStarted = async (sender_psid) => {
   try {
     const username = await getUserProfile(sender_psid)
-    const response = sendGetStartedTemplate(username, sender_psid)
+    // const response = sendGetStartedTemplate(username, sender_psid)
+    const responseWithHello = {
+      text: `Chào mừng ${username} đến với Booking Care. Tại đây chúng tôi cung cấp cho bạn những tiện ích về y tế tốt nhất!`,
+    }
+    const responseWithGiphy = {
+      attachment: {
+        type: 'image',
+        payload: {
+          url: GIPHY_IMAGE_URL,
+          is_reusable: true,
+        },
+      },
+    }
+    const responseWithQuickReply = {
+      text: 'Dưới đây là các lựa chọn của phòng khám',
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'Menu Chính',
+          payload: 'MAIN_MENU',
+        },
+        {
+          content_type: 'text',
+          title: 'Hướng dẫn sử dụng bot',
+          payload: 'GUIDANCE',
+        },
+      ],
+    }
 
     // Send generic template message
-    await callSendAPI(sender_psid, response)
+    // await callSendAPI(sender_psid, response)
+    await callSendAPI(sender_psid, responseWithHello)
+    await callSendAPI(sender_psid, responseWithGiphy)
+    await callSendAPI(sender_psid, responseWithQuickReply)
   } catch (error) {
     console.log(error)
   }
@@ -35,7 +66,7 @@ const getUserProfile = (sender_psid) => {
       (err, res, body) => {
         if (!err) {
           body = JSON.parse(body)
-          let username = `${body.last_name} ${body.first_name}`
+          let username = `${body.first_name} ${body.last_name}`
           resolve(username)
         } else {
           console.error('Unable to send message:' + err)

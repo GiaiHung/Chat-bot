@@ -34,7 +34,7 @@ let getGoogleSheet = async (data) => {
     await sheet.addRow({
       'Tên Facebook': facebookName,
       'Người dùng email': email,
-      'Số điện thoại': phoneNumber,
+      'Số điện thoại': `'` + phoneNumber,
       'Thời gian': formatedDate,
       'Tên khách hàng': customerName,
     })

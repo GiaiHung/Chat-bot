@@ -104,7 +104,7 @@ const sendMainMenuTemplate = () => {
   return response
 }
 
-const sendGuidanceTemplate1 = () => {
+const sendGuidanceTemplate1 = (sender_psid) => {
   const response = {
     attachment: {
       type: 'template',
@@ -120,9 +120,10 @@ const sendGuidanceTemplate1 = () => {
             buttons: [
               {
                 type: 'web_url',
-                title: 'Xem bác sĩ',
-                url: menuLinks.doctor,
+                url: `${process.env.URL_WEB_VIEW_RESERVE}/${sender_psid}`,
+                title: 'Hẹn lịch khám',
                 webview_height_ratio: 'full',
+                messenger_extensions: true,
               },
               {
                 type: 'web_url',

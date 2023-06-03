@@ -90,17 +90,17 @@ const handleMainMenu = async (sender_psid) => {
 }
 
 // RESERVE
-// const handleReserve = async (sender_psid) => {
-//   try {
-//     // Generic
-//     const response1 = sendGuidanceTemplate1(sender_psid)
+const handleReserve = async (sender_psid) => {
+  try {
+    // Generic
+    const response1 = sendGuidanceTemplate1(sender_psid)
 
-//     // Send generic template message
-//     await callSendAPI(sender_psid, response1)
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+    // Send generic template message
+    await callSendAPI(sender_psid, response1)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 // GUIDANCE
 const handleSendGuidance = async (sender_psid) => {

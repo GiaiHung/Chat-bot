@@ -40,7 +40,12 @@ const handleGetStarted = async (sender_psid) => {
         },
         {
           content_type: 'text',
-          title: 'Hướng dẫn sử dụng bot',
+          title: 'HD sử dụng bot',
+          payload: 'GUIDANCE',
+        },
+        {
+          content_type: 'text',
+          title: 'Hẹn lịch khám',
           payload: 'GUIDANCE',
         },
       ],

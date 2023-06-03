@@ -111,4 +111,5 @@ export {
   handleReserve,
   handleSendGuidance,
   handleSendMedicalProduct,
+  getUserProfile,
 }

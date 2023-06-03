@@ -1,4 +1,5 @@
 import { callSendAPI } from '../../services/chatbot/chatbotService'
+import { getUserProfile } from '../../services/chatbot/sendTemplates'
 
 const getReserver = (req, res) => {
   const senderId = req.params.id
@@ -11,7 +12,7 @@ const postReserve = async (req, res) => {
   try {
     const { psid, customerName, email, phoneNumber } = req.body
     let name = ''
-    if (!customerName) name = 'Tên được để trống'
+    if (!customerName) name = await getUserProfile(psid)
     else name = customerName
 
     const response1 = {

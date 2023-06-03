@@ -1,5 +1,6 @@
 import { callSendAPI } from '../../services/chatbot/chatbotService'
 import { getUserProfile } from '../../services/chatbot/sendTemplates'
+import { getGoogleSheet } from '../excel'
 
 const getReserver = (req, res) => {
   const senderId = req.params.id
@@ -11,9 +12,17 @@ const getReserver = (req, res) => {
 const postReserve = async (req, res) => {
   try {
     const { psid, customerName, email, phoneNumber } = req.body
+    const facebookName = await getUserProfile(psid)
     let name = ''
-    if (!customerName) name = await getUserProfile(psid)
+    if (!customerName) name = facebookName
     else name = customerName
+
+    await getGoogleSheet({
+      facebookName,
+      customerName: name,
+      email,
+      phoneNumber,
+    })
 
     const response1 = {
       text: `--- Thông tin khách hàng đặt khám chữa bệnh ---

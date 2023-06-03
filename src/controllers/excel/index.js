@@ -8,8 +8,9 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY.replace(
 const CLIENT_EMAIL = process.env.CLIENT_EMAIL
 const SHEET_ID = process.env.SHEET_ID
 
-let getGoogleSheet = async (req, res) => {
+let getGoogleSheet = async (data) => {
   try {
+    const { customerName, facebookName, email, phoneNumber } = data
     let currentDate = new Date()
 
     const format = 'HH:mm DD/MM/YYYY'
@@ -31,19 +32,14 @@ let getGoogleSheet = async (req, res) => {
 
     // append rows
     await sheet.addRow({
-      'Tên Facebook': 'Hỏi Dân IT',
-      Email: 'haryphamdev@gmail.com',
-      'Số điện thoại': `'0321456789`,
+      'Tên Facebook': facebookName,
+      'Người dùng email': email,
+      'Số điện thoại': phoneNumber,
       'Thời gian': formatedDate,
-      'Tên khách hàng': 'Eric',
+      'Tên khách hàng': customerName,
     })
-
-    return res.send('Writing data to Google Sheet succeeds!')
   } catch (e) {
     console.log(e)
-    return res.send(
-      'Oops! Something wrongs, check logs console for detail ... '
-    )
   }
 }
 

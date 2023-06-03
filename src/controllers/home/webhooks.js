@@ -53,7 +53,7 @@ const postWebhooks = async (req, res) => {
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response
-  // Check message from quick reply
+  // Check message from quick reply, then
   const quick_reply = received_message.quick_reply
   if (quick_reply && quick_reply.payload) {
     if (quick_reply.payload === 'MAIN_MENU') {

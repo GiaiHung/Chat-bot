@@ -115,7 +115,7 @@ const handleSendGuidance = async (sender_psid) => {
 
     // Send generic template message
     await callSendAPI(sender_psid, response1)
-    await callSendAPI(sender_psid, response2)
+    // await callSendAPI(sender_psid, response2)
   } catch (error) {
     console.log(error)
   }

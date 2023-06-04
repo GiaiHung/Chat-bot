@@ -104,7 +104,7 @@ const sendMainMenuTemplate = () => {
   return response
 }
 
-const sendGuidanceTemplate1 = (sender_psid) => {
+const sendGuidanceTemplate1 = (sender_psid, username) => {
   const response = {
     attachment: {
       type: 'template',
@@ -113,8 +113,7 @@ const sendGuidanceTemplate1 = (sender_psid) => {
         elements: [
           {
             title: `Hướng dẫn sử dụng bot`,
-            subtitle:
-              'Xin chào! Tôi là chat bot Booking Care. Tôi có thể giúp được gì cho bạn? Click vào các nút dưới đây để xem thêm chi tiết',
+            subtitle: `Xin chào ${username}! Tôi là chat bot Booking Care. Tôi có thể giúp được gì cho bạn? Click vào các nút dưới đây để xem thêm chi tiết 😉`,
             image_url:
               'https://www.callcentrehelper.com/images/stories/2020/10/chat-bot-head-set-760.jpg',
             buttons: [
@@ -149,10 +148,28 @@ const sendGuidanceTemplate1 = (sender_psid) => {
 const sendGuidanceTemplate2 = () => {
   const response = {
     attachment: {
-      type: 'video',
+      type: 'template',
       payload: {
-        url: GUIDANCE_VIDEO_URL,
-        is_reusable: true,
+        template_type: 'media',
+        elements: [
+          {
+            media_type: 'video',
+            attachment_id: '1266683700907567',
+            buttons: [
+              {
+                type: 'postback',
+                title: 'Menu Chính',
+                payload: 'MAIN_MENU',
+              },
+              {
+                type: 'web_url',
+                title: 'Xem thêm',
+                url: 'https://www.youtube.com/channel/UC9l2RhMEPCIgDyGCH8ijtPQ',
+                webview_height_ratio: 'full',
+              },
+            ],
+          },
+        ],
       },
     },
   }

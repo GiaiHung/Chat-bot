@@ -154,7 +154,7 @@ const sendGuidanceTemplate2 = () => {
         elements: [
           {
             media_type: 'video',
-            attachment_id: '1266683700907567',
+            url: 'https://www.facebook.com/bookingcare288/videos/1266683700907567',
             buttons: [
               {
                 type: 'postback',

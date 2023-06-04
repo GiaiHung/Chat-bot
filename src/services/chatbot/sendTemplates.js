@@ -110,12 +110,12 @@ const handleSendGuidance = async (sender_psid) => {
     const username = await getUserProfile(sender_psid)
     const response1 = sendGuidanceTemplate1(sender_psid, username)
 
-    Video
+    // Video
     const response2 = sendGuidanceTemplate2()
 
     // Send generic template message
     await callSendAPI(sender_psid, response1)
-    // await callSendAPI(sender_psid, response2)
+    await callSendAPI(sender_psid, response2)
   } catch (error) {
     console.log(error)
   }

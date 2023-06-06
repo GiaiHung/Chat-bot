@@ -108,14 +108,18 @@ const handleSendGuidance = async (sender_psid) => {
   try {
     // Generic
     const username = await getUserProfile(sender_psid)
-    const response1 = sendGuidanceTemplate1(sender_psid, username)
+    const response1 = {
+      text: `Xin chào ${username}! Tôi là chat bot Booking Care. Tôi có thể giúp được gì cho bạn? Click vào các nút dưới đây để xem thêm chi tiết 😉`,
+    }
+    const response2 = sendGuidanceTemplate1(sender_psid, username)
 
     // Video
-    const response2 = sendGuidanceTemplate2()
+    const response3 = sendGuidanceTemplate2()
 
     // Send generic template message
     await callSendAPI(sender_psid, response1)
     await callSendAPI(sender_psid, response2)
+    await callSendAPI(sender_psid, response3)
   } catch (error) {
     console.log(error)
   }
